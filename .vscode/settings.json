@@ -9,9 +9,49 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "recomendation",
+            "name": "recomendation_db",
             "database": "MySQL",
+            "username": "admin",
+            "askForPassword": true
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "recomendation_db",
+            "database": "recomendation_db",
             "username": "admin"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "workbench",
+            "database": "recomendation_db",
+            "username": "gaurav"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "root",
+            "database": "recomendation_db",
+            "username": "gaurav"
         }
     ]
 }

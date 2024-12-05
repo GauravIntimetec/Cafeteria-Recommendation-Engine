@@ -1,0 +1,143 @@
+
+\documentclass[a4paper,8pt]{article}
+
+\usepackage{parskip} 
+\usepackage{hologo}
+\usepackage{fontspec}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=.4in, bottom=.4in]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.42\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{1pt}{2pt}{2pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\color[HTML]{110223}%{1C033C}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+% \usepackage{times}
+
+% For underline
+\usepackage[normalem]{ulem}
+
+\setmainfont{Arial}  % Set it to whatever you like
+
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\color[HTML]{1C033C} \Huge{Gaurav Singh Shekhawat} \\[6pt]
+\\
+\textcolor[HTML]{371e77}{\underline{\href{mailto:gss9269241952@gmail.com}{\raisebox{-0.05\height}{\faEnvelope} gss9269241952@gmail.com}} $|$}
+\textcolor[HTML]{371e77}{\href{tel:+916378367588}{\raisebox{-0.05\height}{\faMobile} +91 6378367588}}
+
+{\underline{\href{https://www.linkedin.com/in/gaurav-singh-shekhawat-1590a6211?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app}{\raisebox{-0.05\height}{\faLinkedin} linkedin.com/ Gaurav}}}
+\textcolor[HTML]{371e77}{\underline{\href{https://github.com/gss9269241952}{\raisebox{-0.05\height}{\faGithub} Github.com/Gaurav}}}
+\end{tabularx}
+
+% Education
+\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{B.Tech (Bachelor of Technology)} & \hfill \color[HTML]{371e77} graduation year: Jun. 2022 \\
+\color[HTML]{1e371e} B.Tech in Computer Science and Engineering $|$ Engineering College Bikaner, Raj & \hfill \color[HTML]{4B28A4} \textit{\textbf{GPA: 8.2/10}} \\
+\color[HTML]{1e371e} Senior secondary education $|$ CBSE  & \hfill \color[HTML]{4B28A4} \textit{\textbf{GPA: 8/10}} \\
+\multicolumn{2}{@{}X@{}}{\newline \hspace*{16ex} }
+\end{tabularx}
+
+%Experience
+\section{Experience}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\uline{\href{https://github.com/}{In Time Tec}}} \hfill \color[HTML]{371e77} Jun. 2022 - Present \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{Data Engineer (HP Digital Analytics)}}\ \hfill \color[HTML]{4B28A4} \textit{Python, ETL, SQL,Data Warehousing, Dataiqu DSS, Data dictionary, Databricks, AWS} \\[5pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Leveraged Dataiku DSS and \textbf{Databricks} Notebooks to build \textbf{end-to-end data pipelines} and workflows
+        \item Utilized distributed computing to manage and process large datasets from HP's advertisers and marketers.
+        \item Developed data preparation and cleansing recipes using
+python, SQL and pyspark while keeping
+clean code and data structures priority. Implemented master data management(\textbf{MDM}) processes using Databricks and worked on big data technologies
+        \item Collaborated with Data Science Team to Boost Marketing ROI:
+Worked Closely on cross-functional effort with data scientists to implement a data-driven 4P model in \textbf{Agile} methodology. Analyzed large datasets, identifying key patterns that informed the model. Implemented targeted marketing strategies based on model insights, resulting in a 17 percent increase in customer engagement and a 13 percent rise in conversion rates.
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{371e77}\textbf\ \hfill \color[HTML]{4B28A4} \textit{API data Extraction, ETL, ELT, Data Pipeline Automation, OOP, Pandas} \\
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item \textbf{Collaborated with data scientists and analysts}, employing Databricks notebooks and data flows to meticulously plan and execute the migration from Dataiku. \textbf{Automated intricate pipelines} using PySpark, resulting in reduction in processing time.
+        \item redesigned data pipelines, using Databricks notebooks and automated the deployment of data pipelines using \textbf{CI/CD} practices. Engaged closely with data analysts and scientists, ensuring seamless data transfer.Acquired proficiency in data governance and management methodologies
+        \item Experienced in \textbf{Extracting data from API's} and integrating it
+into PostgreSQL databases and data warehouse, while implenting \textbf{data warehousing} concepts to optimise data Extraction.
+        \item Specialized in \textbf{digital analytics} and \textbf{programmatic advertising}, enabling data-driven decision-making.
+        \item Proactively utilize data dictionary management to enhance
+data quality and reduce system vulnerabilities. 
+        \item As a dedicated data engineer, prioritized writing \textbf{clean}, modular, and efficient code following \textbf{Object-Oriented Programming principles}. Ensured maintainability and scalability of data pipelines by emphasizing best coding practices, leading to a more robust and adaptable data infrastructure.
+        
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+
+
+% Projects
+\section{Personal Projects}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{\uline{\href{https://github.com/gss9269241952}{ CAFETERIA MANAGEMENT SYSTEM}}} \hfill \color[HTML]{371e77} MAY. 2024 - JUN. 2024 \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{}} \hfill \color[HTML]{4B28A4} \textit{ SQL, Python, Data Analysis, Git, Algorithm Development, Database Management, Machine Learning} \\[5pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item  Developed a recommendation engine that leveraged user feedback and profiles to provide personalized food suggestions, enhancing user experience and engagement.
+Implemented machine learning algorithms to analyze data patterns and predict user preferences, leading to a significant improvement in recommendation accuracy.
+        
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\color[HTML]{1C033C}\textbf{Certifications:} \\[2pt]
+\color[HTML]{1e371e} \hspace*{4ex} { Dataiku Core Designer | Databricks Lakehouse | Amplify Data Collaboration Training |  Python Web Development from University of Michigan |  Five Star in Python and SQL at Hackerrank}.
+
+
+\section{Skills}
+\color[HTML]{371e77}\hspace*{4ex} Python, SQL, Pyspark, CI/CD, ETL, PostgreSQL, REST API, Power BI, Spark, Staging Area Setup, Data modelling, Data Warehousing, AGILE, GIT, Pandas, Numpy, DBMS,PostgreSQL \\[3pt]
+
+% Leadership and Volunteering
+\color[HTML]{1C033C}\textbf{Learn and Grow/Code Program:} \\[2pt]
+\color[HTML]{1C033C} \hspace*{4ex} \textbf{2+ years of Experience in Data Engineering}. Adheres to Clean Code principles and emphasizes code quality.\textbf{ensuring client satisfaction through effective communication and proactive problem-solving}. Proficient in on-call client communications and always ready to take necessary steps for project success. \\[3pt]
+\end{document}

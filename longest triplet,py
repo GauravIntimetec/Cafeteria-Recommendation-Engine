@@ -1,0 +1,21 @@
+def increasingTriplet(nums) -> bool:
+        n = len(nums)
+        for i in range(n):
+            
+            for j in range(i+1, n):
+                if nums[i]< nums[j]:
+                    pass
+                else: 
+                    continue
+                for k in range(j+1, n):
+                    print(nums[i],nums[j],nums[k])
+                    if nums[j]< nums[k]:
+                        return True
+                    # else: 
+                    #     continue
+                    # if nums[i]< nums[j] < nums[k]:
+                    #       print(True)
+                        print(nums[i],nums[j],nums[k])
+
+increasingTriplet([2,1,5,0,4,6])
+

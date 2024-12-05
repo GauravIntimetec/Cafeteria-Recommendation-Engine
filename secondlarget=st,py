@@ -1,0 +1,15 @@
+input = [11, 13, 21, 9]
+output = [13, 21, -1, 11]
+
+def second_largest(list): 
+    n = len(list)
+    result = [-1]*n
+    for i in range(n): 
+        for j in range(i+1,n): 
+            # print(list[i], list[j])
+            if list[i] <list[j]:
+                result[i] = list[j]
+                break
+    print("result", result)
+            
+second_largest(input)

@@ -1,0 +1,131 @@
+USE recomendation_db;
+
+CREATE TABLE User (
+    userID INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    role ENUM('Admin', 'Chef', 'Employee') NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE FoodItem (
+    foodItemID INT AUTO_INCREMENT PRIMARY KEY,
+    itemName VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    availability BOOLEAN NOT NULL,
+    date DATE NOT NULL
+    
+    category VARCHAR(50)
+);
+
+CREATE TABLE Recommendation (
+    recommendationID INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    chefID INT,
+    category VARCHAR(50),
+    FOREIGN KEY (chefID) REFERENCES User(userID)
+);
+
+CREATE TABLE Feedback (
+    feedbackID INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT,
+    foodItemID INT,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    category VARCHAR(50),
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userID) REFERENCES User(userID),
+    FOREIGN KEY (foodItemID) REFERENCES FoodItem(foodItemID)
+);
+
+CREATE TABLE Notification (
+    notificationID INT AUTO_INCREMENT PRIMARY KEY,
+    message TEXT NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    userID INT,
+    FOREIGN KEY (userID) REFERENCES User(userID)
+);
+
+CREATE TABLE Report (
+    reportID INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    content TEXT NOT NULL,
+    chefID INT,
+    FOREIGN KEY (chefID) REFERENCES User(userID)
+);
+
+CREATE TABLE Votes (
+    voteID INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT NOT NULL,
+    foodItemID INT NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userID) REFERENCES User(userID),
+    FOREIGN KEY (foodItemID) REFERENCES FoodItem(foodItemID)
+);
+
+CREATE TRIGGER before_feedback_insert
+BEFORE INSERT ON Feedback
+FOR EACH ROW
+BEGIN
+    DECLARE food_category VARCHAR(50);
+
+    -- Get the category from the FoodItem table
+    SELECT category INTO food_category
+    FROM FoodItem
+    WHERE foodItemID = NEW.foodItemID;
+
+    -- Set the category in the new Feedback record
+    SET NEW.category = food_category;
+END;
+
+
+CREATE TABLE DetailedFeedback (
+    feedbackID INT AUTO_INCREMENT PRIMARY KEY,
+    foodItemID INT,
+    question VARCHAR(255),
+    answer TEXT,
+    userID INT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (foodItemID) REFERENCES FoodItem(foodItemID),
+    FOREIGN KEY (userID) REFERENCES User(userID)
+);
+
+CREATE TABLE EmployeeProfile (
+    profileID INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT,
+    dietPreference ENUM('Vegetarian', 'Non Vegetarian', 'Eggetarian'),
+    spiceLevel ENUM('High', 'Medium', 'Low'),
+    cuisinePreference ENUM('North Indian', 'South Indian', 'Other'),
+    sweetTooth ENUM('Yes', 'No'),
+    FOREIGN KEY (userID) REFERENCES User(userID)
+);
+
+CREATE TABLE FoodItemProfile (
+    foodItemID INT PRIMARY KEY,
+    dietPreference ENUM('Vegetarian', 'Non Vegetarian', 'Eggetarian'),
+    spiceLevel ENUM('High', 'Medium', 'Low'),
+    cuisinePreference ENUM('North Indian', 'South Indian', 'Other'),
+    sweetTooth ENUM('Yes', 'No'),
+    FOREIGN KEY (foodItemID) REFERENCES FoodItem(foodItemID)
+);
+
+INSERT INTO FoodItemProfile (foodItemID, dietPreference, spiceLevel, cuisinePreference, sweetTooth)
+VALUES
+(34, 'Non Vegetarian', 'High', 'North Indian', 'No'), -- Butter Chicken
+(35, 'Non Vegetarian', 'High', 'North Indian', 'No'), -- Biryani
+(36, 'Vegetarian', 'Medium', 'South Indian', 'No'), -- Dosa
+(37, 'Vegetarian', 'High', 'North Indian', 'No'), -- Paneer Tikka
+(38, 'Vegetarian', 'Medium', 'North Indian', 'No'), -- Chole Bhature
+(39, 'Vegetarian', 'Medium', 'North Indian', 'No'), -- Samosa
+(40, 'Vegetarian', 'Low', 'North Indian', 'Yes'), -- Gulab Jamun
+(41, 'Vegetarian', 'Medium', 'North Indian', 'No'), -- Masala Chai
+(42, 'Vegetarian', 'Medium', 'North Indian', 'No'), -- Pav Bhaji
+(43, 'Non Vegetarian', 'High', 'North Indian', 'No'), -- Tandoori Chicken
+(52, 'Vegetarian', 'Low', 'Other', 'Yes'), -- Watermelon Pudding
+(53, 'Vegetarian', 'Low', 'North Indian', 'Yes'), -- Rabdi Malai
+(54, 'Vegetarian', 'Low', 'North Indian', 'Yes'), -- Kulfi
+(56, 'Vegetarian', 'Low', 'North Indian', 'Yes'), -- Rabdi
+(57, 'Vegetarian', 'High', 'North Indian', 'No'), -- Teekha Paneer, Peanut
+(58, 'Vegetarian', 'Medium', 'North Indian', 'No'), -- Pakode with Tea
+(59, 'Vegetarian', 'Medium', 'North Indian', 'No'), -- Dum Aloo
+(60, 'Non Vegetarian', 'High', 'North Indian', 'No'), -- Mutton with Chapati
+(61, 'Vegetarian', 'Medium', 'North Indian', 'No'); -- Poha with Namkeen
